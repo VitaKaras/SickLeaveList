@@ -1,0 +1,24 @@
+<div>
+  <div class="container">
+    <form  class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4" [formGroup]="registrationForm" (ngSubmit)="onSubmit()" novalidate>
+      <h2>Please, sign in</h2>
+      <hr class="colorgraph">
+      <div class="form-group">
+        <label  class="center-block" for="username"> Login: </label>
+        <input  class="form-control" type="text" formControlName="username" id="username" [(ngModel)]="user.login"  name="login" required>
+        <div *ngIf="formErrors.username" class="alert alert-danger">
+          {{ formErrors.username }}
+        </div>
+      </div>
+      <div class="form-group">
+        <label  class="center-block" for="password"> Password: </label>
+        <input  class="form-control" type="password" formControlName="password" id="password" [(ngModel)]="user.password" name="password" required>
+        <div *ngIf="formErrors.password" class="alert alert-danger">
+          {{ formErrors.password }}
+        </div>
+      </div>
+      <hr class="colorgraph">
+      <button type="submit" class="btn btn-success" [disabled]="!registrationForm.valid">Submit</button>
+    </form>
+  </div>
+</div>
