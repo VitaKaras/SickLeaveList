@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {RegistrationService} from "../registration/registration.service";
 import {Router} from "@angular/router";
 import {AuthorizationService} from "./authorization.service";
+import {SharedService} from "../../shared.service";
 
 @Component({
   selector: 'app-authorization',
@@ -16,6 +17,7 @@ export class AuthorizationComponent implements OnInit {
    login: '',
     password: ''
   };
+
 
   formErrors = {
     'username': '',
@@ -35,6 +37,7 @@ export class AuthorizationComponent implements OnInit {
     }
   };
 
+
   onSubmit(): void {
     // check unique username
     this.registrationService.checkUserName(this.user['login']).then((result) => {
@@ -44,6 +47,7 @@ export class AuthorizationComponent implements OnInit {
           if(result != null) {
             console.log(result);
             console.log("user authorized");
+            this.sharedService.sharedUser = new User(result['firstName'], result['lastName'], result['email'], result['telephone'], result['login'], result['password'], result['passwordConf']);
             this.router.navigateByUrl('/home');
           } else {
             let password = this.registrationForm.controls['password'];
@@ -71,7 +75,11 @@ export class AuthorizationComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private registrationService: RegistrationService,
               private authorizationService: AuthorizationService,
+              private sharedService: SharedService,
               private router: Router) { }
+
+
+
 
   buildForm(): void {
     this.registrationForm = this.fb.group({

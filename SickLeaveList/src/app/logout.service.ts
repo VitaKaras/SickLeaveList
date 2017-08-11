@@ -9,7 +9,7 @@ export class LogOutService {
 
   logOut() {
     return new Promise((resolve, reject) => {
-      this.http.get('/api/logout')
+      this.http.get('/user/logout')
         .map(res => res.json())
         .subscribe(res => {
           resolve(res);
@@ -22,7 +22,7 @@ export class LogOutService {
 
   getAccess(user) {
     return new Promise((resolve, reject) => {
-      this.http.post('/api', user)
+      this.http.post('/user', user)
         .map(res => res.json())
         .subscribe(res => {
           resolve(res);
@@ -35,7 +35,7 @@ export class LogOutService {
 
   checkPassword(password) {
     return new Promise((resolve, reject) => {
-      this.http.get('/api/password/' +  password )
+      this.http.get('/user/password/' +  password )
         .map(res => res.json())
         .subscribe( res => {
           resolve(res);
@@ -47,7 +47,7 @@ export class LogOutService {
 
   checkUserName(username) {
     return new Promise((resolve, reject) => {
-      this.http.get('/api/username/' +  username)
+      this.http.get('/user/username/' +  username)
         .map(res => res.json())
         .subscribe( res => {
           resolve(res);

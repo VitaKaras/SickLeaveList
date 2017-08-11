@@ -1,0 +1,50 @@
+<div >
+  <h3> Add new sick-list: </h3>
+  <form id="addListForm" class='col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-xs-12 col-sm-12' #addListForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+
+
+    <div class="form-group">
+      <label for="dateFrom">From: </label>
+      <div class="input-group">
+        <input class="form-control" placeholder="yyyy-mm-dd"
+               id="dateFrom"
+               name="dp1" [(ngModel)]="model.dateFrom"
+               placement="bottom-right"
+               [minDate]="minDate"
+               ngbDatepicker #d="ngbDatepicker">
+        <div class="input-group-addon" (click)="d.toggle()" >
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="dateTo">From: </label>
+      <div class="input-group">
+        <input class="form-control" placeholder="yyyy-mm-dd"
+               id="dateTo"
+               name="dp2" [(ngModel)]="model.dateTo"
+               placement="bottom-right"
+               [minDate]="minDate"
+               ngbDatepicker #d2="ngbDatepicker">
+        <div class="input-group-addon" (click)="d2.toggle()" >
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="type"> Type:</label>
+      <select id="type" class="custom-select"
+              name="type"
+              [(ngModel)]="model.type" required
+              #power="ngModel" >
+        <option *ngFor="let type of types" [value]="type">{{type}}</option>
+      </select>
+      <!--<div *ngIf="type.hasError('required')"-->
+      <!--class="alert alert-danger">-->
+      <!--</div>-->
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="!addListForm.form.valid">Add</button>
+  </form>
+</div>

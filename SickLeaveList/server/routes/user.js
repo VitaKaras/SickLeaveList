@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-var User = require('../../src/models/user');
-var bcrypt = require('bcrypt');
+const User = require('../../src/models/user');
+const bcrypt = require('bcrypt');
 
 router.post('/', function(req, res, next) {
-  console.log("boduy" + req.body);
+  console.log("body" + req.body);
   if (req.body.firstName &&
     req.body.lastName &&
     req.body.email &&
@@ -13,7 +13,7 @@ router.post('/', function(req, res, next) {
     req.body.password &&
     req.body.passwordConf) {
 
-    var userData = {
+    const userData = {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
@@ -33,7 +33,7 @@ router.post('/', function(req, res, next) {
     });
 
   } else if (req.body.login && req.body.password) {
-    console.log("reques" + req.body.login);
+    console.log("request" + req.body.login);
     User.findOne({ login: req.body.login }, function (err, user) {
       if(err) return next(err);
       bcrypt.compare(req.body.password, user.password, function (err, result) {
@@ -46,27 +46,20 @@ router.post('/', function(req, res, next) {
       })
 
     })
-
-    // User.authenticate(req.body.login, req.body.password, function (error, user) {
-    //   console.log(req.body.login);
-    //   console.log(req.body.password);
-    //   if (error) {
-    //     var err = new Error('Wrong email or password.');
-    //     err.status = 401;
-    //     return next(err);
-    //   } else if(user == "fail") {
-    //     console.log("password not correct");
-    //   } else {
-    //     req.session.userId = user._id;
-    //     res.json(user);
-    //   }
-    // });
   } else {
-    var err = new Error('All fields required.');
+    const err = new Error('All fields required.');
     err.status = 400;
     return next(err);
   }
 });
+
+//get user by id
+router.get('/:id', function (req, res, next) {
+  User.findById(req.params.id, function (err, listElem) {
+    if(err) return next(err);
+    res.json(listElem);
+  })
+})
 
 
 

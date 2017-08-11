@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { RegistrationService } from './registration.service';
 import {Router} from "@angular/router";
+import {User} from "../../user/user";
 
 
 @Component({
@@ -10,17 +11,9 @@ import {Router} from "@angular/router";
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
+  @Input()  user = new User('', '', '', null , '', '', '');
 
   registrationForm: FormGroup;
-  user = {
-    firstName: '',
-    lastName: '',
-    email:'',
-    telephone: '',
-    login: '',
-    password: '',
-    passwordConf: ''
-  };
 
   formErrors = {
     'firstName': '',

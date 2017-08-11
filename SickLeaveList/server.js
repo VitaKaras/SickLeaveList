@@ -4,9 +4,10 @@ const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const index = require('./server/routes/index');
-var session = require('express-session');
-var MongoStore = require('connect-mongo')(session);
+const user = require('./server/routes/user');
+const list = require('./server/routes/list');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 
 
 
@@ -21,7 +22,7 @@ db.once('open', function () {
 });
 
 // Get our API routes
-const api = require('./server/routes/api');
+
 
 const app = express();
 
@@ -42,8 +43,8 @@ app.use(session({
 
 // Set our api routes
 
-app.use('/api', api);
-
+app.use('/user', user);
+app.use('/list', list);
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
   res.sendFile('dist/index.html', { root : __dirname});

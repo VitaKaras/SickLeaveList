@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LogOutService} from "../logout.service";
 import {Router} from "@angular/router";
+import {ListService} from "./list.service";
 
 @Component({
   selector: 'app-home',
@@ -8,22 +9,21 @@ import {Router} from "@angular/router";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  vacations = 5;
+  sickLists = 3;
 
-  constructor(private logOutService: LogOutService,
-              private router: Router) { }
+  constructor(private listService: ListService,
+              private router: Router,
+              private logOutService: LogOutService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   logOut(): void{
-    this.logOutService.logOut().then( (result) => {
-      if(result == "success") {
-        console.log("success logout");
-        this.router.navigateByUrl('/start');
-      }
-    }, (error) => {
-      console.log("fail logout");
-    })
+    this.logOutService.logOut().then((result) => {
+      console.log('success logout');
+      this.router.navigateByUrl('/start');
+    }, (err) => {
+      console.log(err);
+    });
   }
-
 }

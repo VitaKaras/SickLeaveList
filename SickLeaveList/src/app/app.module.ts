@@ -10,6 +10,9 @@ import {HttpModule} from "@angular/http";
 import {AuthorizationService} from "./start-page/authorization/authorization.service";
 import {HomeModule} from "./home/home.module";
 import {LogOutService} from "./logout.service";
+import {ListService} from "./home/list.service";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {SharedService} from "./shared.service";
 
 @NgModule({
   declarations: [
@@ -21,9 +24,10 @@ import {LogOutService} from "./logout.service";
     StartPageModule,
     AppRoutingModule,
     HttpModule,
-    HomeModule
+    HomeModule,
+    NgbModule.forRoot(),
   ],
-  providers: [RegistrationService, AuthorizationService, LogOutService],
+  providers: [RegistrationService, AuthorizationService, LogOutService, ListService, SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
