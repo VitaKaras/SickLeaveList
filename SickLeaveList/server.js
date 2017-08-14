@@ -4,7 +4,7 @@ const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const user = require('./server/routes/user');
+const api = require('./server/routes/api');
 const list = require('./server/routes/list');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
@@ -43,7 +43,7 @@ app.use(session({
 
 // Set our api routes
 
-app.use('/user', user);
+app.use('/api', api);
 app.use('/list', list);
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {

@@ -13,7 +13,7 @@ export class RegistrationService {
 
   saveUser(user) {
     return new Promise((resolve, reject) => {
-      this.http.post('/user', user)
+      this.http.post('/api', user)
         .map(res => res.json())
         .subscribe(res => {
           resolve(res);
@@ -26,7 +26,7 @@ export class RegistrationService {
 
   checkEmail(email) {
     return new Promise((resolve, reject) => {
-      this.http.get('/user/email/' +  email )
+      this.http.get('/api/email/' +  email )
         .map(res => res.json())
         .subscribe( res => {
           resolve(res);
@@ -38,7 +38,7 @@ export class RegistrationService {
 
   checkUserName(username) {
     return new Promise((resolve, reject) => {
-      this.http.get('/user/username/' +  username)
+      this.http.get('/api/username/' +  username)
         .map(res => res.json())
         .subscribe( res => {
           resolve(res);

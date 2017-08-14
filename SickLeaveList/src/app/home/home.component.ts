@@ -18,12 +18,18 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() { }
 
-  logOut(): void{
+  logOut(){
     this.logOutService.logOut().then((result) => {
-      console.log('success logout');
-      this.router.navigateByUrl('/start');
+      console.log("logout");
+      console.log(result);
+      if(result == 'success') {
+        console.log('success logout');
+        console.log(result);
+      }
+      //this.router.navigateByUrl('/start/sign_in');
     }, (err) => {
       console.log(err);
     });
   }
+
 }

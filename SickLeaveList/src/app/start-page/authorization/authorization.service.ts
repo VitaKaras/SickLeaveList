@@ -8,7 +8,7 @@ export class AuthorizationService {
 
   getAccess(user) {
     return new Promise((resolve, reject) => {
-      this.http.post('/user', user)
+      this.http.post('/api', user)
         .map(res => res.json())
         .subscribe(res => {
           resolve(res);
@@ -21,7 +21,7 @@ export class AuthorizationService {
 
   checkPassword(password) {
     return new Promise((resolve, reject) => {
-      this.http.get('/user/password/' +  password )
+      this.http.get('/api/password/' +  password )
         .map(res => res.json())
         .subscribe( res => {
           resolve(res);

@@ -5,6 +5,7 @@ import {RegistrationService} from "../registration/registration.service";
 import {Router} from "@angular/router";
 import {AuthorizationService} from "./authorization.service";
 import {SharedService} from "../../shared.service";
+import {LogOutService} from "../../logout.service";
 
 @Component({
   selector: 'app-authorization',
@@ -46,9 +47,10 @@ export class AuthorizationComponent implements OnInit {
         this.authorizationService.getAccess(this.user).then((result) => {
           if(result != null) {
             console.log(result);
+
             console.log("user authorized");
-            this.sharedService.sharedUser = new User(result['firstName'], result['lastName'], result['email'], result['telephone'], result['login'], result['password'], result['passwordConf']);
-            this.router.navigateByUrl('/home');
+            // this.sharedService.sharedUser = new User(result['firstName'], result['lastName'], result['email'], result['telephone'], result['login'], result['password'], result['passwordConf']);
+            this.router.navigate(['/home']);
           } else {
             let password = this.registrationForm.controls['password'];
             password.setErrors({doNotMatch: true});
@@ -76,7 +78,8 @@ export class AuthorizationComponent implements OnInit {
               private registrationService: RegistrationService,
               private authorizationService: AuthorizationService,
               private sharedService: SharedService,
-              private router: Router) { }
+              private router: Router,
+              private logOutService: LogOutService) { }
 
 
 

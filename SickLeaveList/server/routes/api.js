@@ -29,6 +29,7 @@ router.post('/', function(req, res, next) {
       } else {
         req.session.userId = user._id;
         res.json(user);
+
       }
     });
 
@@ -38,8 +39,10 @@ router.post('/', function(req, res, next) {
       if(err) return next(err);
       bcrypt.compare(req.body.password, user.password, function (err, result) {
         if(result === true) {
+          console.log("success authorization");
           req.session.userId = user._id;
           res.json(user);
+          // return res.redirect('/profile');
         } else {
           res.json(null);
         }
@@ -54,12 +57,12 @@ router.post('/', function(req, res, next) {
 });
 
 //get user by id
-router.get('/:id', function (req, res, next) {
-  User.findById(req.params.id, function (err, listElem) {
-    if(err) return next(err);
-    res.json(listElem);
-  })
-})
+// router.get('/:id', function (req, res, next) {
+//   User.findById(req.params.id, function (err, listElem) {
+//     if(err) return next(err);
+//     res.json(listElem);
+//   })
+// })
 
 
 

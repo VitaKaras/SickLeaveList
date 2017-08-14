@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { RegistrationService } from './registration.service';
 import {Router} from "@angular/router";
 import {User} from "../../user/user";
+import {LogOutService} from "../../logout.service";
 
 
 @Component({
@@ -11,7 +12,7 @@ import {User} from "../../user/user";
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-  @Input()  user = new User('', '', '', null , '', '', '');
+  user = new User('', '', '', null , '', '', '');
 
   registrationForm: FormGroup;
 
@@ -57,6 +58,8 @@ export class RegistrationComponent implements OnInit {
     }
   };
 
+
+
   onSubmit(): void {
     // // check unique email
     this.registrationService.checkEmail(this.user['email']).then((result) => {
@@ -95,7 +98,8 @@ export class RegistrationComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private registrationService: RegistrationService,
-              private router: Router) { }
+              private router: Router,
+              private logOutService: LogOutService) { }
 
   buildForm(): void {
     this.registrationForm = this.fb.group({

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {LogOutService} from "../logout.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-start-page',
@@ -7,9 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StartPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private logOutService: LogOutService,
+              private router: Router) { }
 
   ngOnInit() {
   }
-
 }

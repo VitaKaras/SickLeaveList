@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
-import {map} from "rxjs/operator/map";
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+
 
 
 @Injectable()
@@ -9,7 +11,7 @@ export class LogOutService {
 
   logOut() {
     return new Promise((resolve, reject) => {
-      this.http.get('/user/logout')
+      this.http.get('/api/logout')
         .map(res => res.json())
         .subscribe(res => {
           resolve(res);
@@ -22,7 +24,7 @@ export class LogOutService {
 
   getAccess(user) {
     return new Promise((resolve, reject) => {
-      this.http.post('/user', user)
+      this.http.post('/api', user)
         .map(res => res.json())
         .subscribe(res => {
           resolve(res);
@@ -35,7 +37,7 @@ export class LogOutService {
 
   checkPassword(password) {
     return new Promise((resolve, reject) => {
-      this.http.get('/user/password/' +  password )
+      this.http.get('/api/password/' +  password )
         .map(res => res.json())
         .subscribe( res => {
           resolve(res);
@@ -47,7 +49,7 @@ export class LogOutService {
 
   checkUserName(username) {
     return new Promise((resolve, reject) => {
-      this.http.get('/user/username/' +  username)
+      this.http.get('/api/username/' +  username)
         .map(res => res.json())
         .subscribe( res => {
           resolve(res);

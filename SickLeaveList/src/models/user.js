@@ -37,10 +37,10 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
-  list: [{
-    type: Schema.Types.ObjectId,
-    ref: 'listElem'
-  }]
+  // list: [{
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'listElem'
+  // }]
 });
 
 //hashing a password before saving it to the database
