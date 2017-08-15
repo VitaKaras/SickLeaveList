@@ -6,11 +6,11 @@ import {Http} from "@angular/http";
 export class SharedService {
   constructor(private http: Http){}
 
-  sharedUser: User;
+  sharedUser: {};
 
-  getUser(id){
+  getUser(_id){
     return new Promise((resolve, reject) => {
-      this.http.get('/user/', id)
+      this.http.get('/api/'+ _id)
         .map(res => res.json())
         .subscribe(res => {
           resolve(res);

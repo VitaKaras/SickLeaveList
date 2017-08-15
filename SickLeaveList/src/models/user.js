@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const Schema = mongoose.Schema;
+const autopopulate = require('mongoose-autopopulate');
 
 
 //define a schema
@@ -37,11 +38,14 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
-  // list: [{
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'listElem'
-  // }]
+  list: [{
+    type: Schema.Types.ObjectId,
+    ref: 'ListElem',
+    autopopulate: true
+  }]
 });
+
+UserSchema.plugin(autopopulate);
 
 //hashing a password before saving it to the database
 UserSchema.pre('save', function (next) {

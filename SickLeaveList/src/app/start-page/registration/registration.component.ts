@@ -12,7 +12,7 @@ import {LogOutService} from "../../logout.service";
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-  user = new User('', '', '', null , '', '', '');
+  user = new User('', '', '', null , '', '', '', []);
 
   registrationForm: FormGroup;
 

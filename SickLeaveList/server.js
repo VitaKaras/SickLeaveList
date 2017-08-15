@@ -8,7 +8,7 @@ const api = require('./server/routes/api');
 const list = require('./server/routes/list');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
-
+mongoose.Promise = global.Promise
 
 
 mongoose.connect('mongodb://localhost/registeredUsers');

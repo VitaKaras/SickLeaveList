@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LogOutService} from "../logout.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ListService} from "./list.service";
 
 @Component({
@@ -14,7 +14,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private listService: ListService,
               private router: Router,
-              private logOutService: LogOutService) { }
+              private logOutService: LogOutService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() { }
 

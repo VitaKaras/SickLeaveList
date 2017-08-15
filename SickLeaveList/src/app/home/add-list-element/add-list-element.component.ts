@@ -27,17 +27,20 @@ export class AddListElementComponent implements OnInit {
   submitted = false;
 
   onSubmit(): void {
-    this.dateFrom = new Date(this.model.dateFrom);
-    this.dateTo = new Date(this.model.dateTo);
+    // this.dateFrom = new Date(this.model.dateFrom);
+    // this.dateTo = new Date(this.model.dateTo);
+    console.log(this.model.dateFrom);
     let type = this.model.type;
-    //const user = this.sharedService.sharedUser;
-    //console.log(user);
-    // this.listService.addNewListElement(this.sharedService.sharedUser['_id']).then((result) => {
-    //   console.log('success add list');
-    //   //this.router.navigateByUrl('/start');
-    // }, (err) => {
-    //   console.log(err);
-    // });
+    const user = this.sharedService.sharedUser;
+    // console.log(user);
+    const list = new List(this.model.dateFrom,this.model.dateTo, type);
+    console.log(list);
+    this.listService.addNewListElement(this.sharedService.sharedUser['_id'], list).then((result) => {
+      console.log('success add list');
+      //this.router.navigateByUrl('/start');
+    }, (err) => {
+      console.log(err);
+    });
   }
 
   ngOnInit(): void {

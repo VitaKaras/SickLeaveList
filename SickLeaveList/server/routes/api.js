@@ -57,8 +57,8 @@ router.post('/', function(req, res, next) {
 });
 
 //get user by id
-// router.get('/:id', function (req, res, next) {
-//   User.findById(req.params.id, function (err, listElem) {
+// router.get('/:_id', function (req, res, next) {
+//   User.findById(req.params._id, function (err, listElem) {
 //     if(err) return next(err);
 //     res.json(listElem);
 //   })

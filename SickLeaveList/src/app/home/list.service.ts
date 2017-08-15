@@ -8,9 +8,9 @@ export class ListService {
 
   constructor(private http: Http) { }
 
-  addNewListElement(userId){
+  addNewListElement(userId, list){
     return new Promise((resolve, reject) => {
-      this.http.post('/list/', userId)
+      this.http.post('/list/'+ userId, list)
         .map(res => res.json())
         .subscribe(res => {
           resolve(res);

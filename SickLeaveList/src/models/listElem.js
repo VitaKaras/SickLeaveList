@@ -14,5 +14,5 @@ const listElemSchema = new Schema({
 })
 
 
-const ListElem = mongoose.model('listElem', listElemSchema);
+const ListElem = mongoose.model('ListElem', listElemSchema);
 module.exports = ListElem;

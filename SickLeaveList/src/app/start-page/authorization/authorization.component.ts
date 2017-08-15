@@ -47,9 +47,11 @@ export class AuthorizationComponent implements OnInit {
         this.authorizationService.getAccess(this.user).then((result) => {
           if(result != null) {
             console.log(result);
-
+            this.sharedService.sharedUser = result;
+            console.log(this.sharedService.sharedUser);
             console.log("user authorized");
             // this.sharedService.sharedUser = new User(result['firstName'], result['lastName'], result['email'], result['telephone'], result['login'], result['password'], result['passwordConf']);
+
             this.router.navigate(['/home']);
           } else {
             let password = this.registrationForm.controls['password'];

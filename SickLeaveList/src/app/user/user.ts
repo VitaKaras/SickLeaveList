@@ -6,6 +6,7 @@ export class User {
   login: string;
   password: string;
   passwordConf: string;
+  list:  object [];
 
   constructor(
     firstName: string,
@@ -14,7 +15,8 @@ export class User {
     telephone: number,
     login: string,
     password: string,
-    passwordConf: string
+    passwordConf: string,
+    list: object []
   ) {
     this.firstName = firstName;
     this.lastName = lastName;
@@ -23,6 +25,7 @@ export class User {
     this.login = login;
     this.password = password;
     this.passwordConf = passwordConf;
+    this.list = list;
   }
 
 }
