@@ -19,7 +19,6 @@ export class AuthorizationComponent implements OnInit {
     password: ''
   };
 
-
   formErrors = {
     'username': '',
     'password': ''

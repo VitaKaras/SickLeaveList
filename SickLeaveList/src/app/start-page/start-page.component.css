@@ -4,8 +4,12 @@ a:visited {
 a:hover {
   color: #62c2e4; }
 
+nav {
+  text-align: center;
+}
 a {
-  font-size: 3.5vh;
+  font-size: 40px;
+  margin: 40px;
   text-decoration: none;
   cursor: pointer; }
 

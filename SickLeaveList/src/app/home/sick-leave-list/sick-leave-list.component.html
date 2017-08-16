@@ -1,11 +1,55 @@
 <h2> The whole list:</h2>
-<div>
-  <ul>
-    <li *ngFor="let listElem of list" >
-      <span >{{listElem.dateFrom}}</span>
-      <span>{{listElem.dateTo}}</span>
-      <span>{{listElem.type}}</span>
-      <button>X</button>
-    </li>
-  </ul>
-</div>
+<!--<div>-->
+  <!--<ul>-->
+    <!--<li *ngFor="let listElem of list" >-->
+      <!--<span >{{listElem.dateFrom}}</span>-->
+      <!--<span>{{listElem.dateTo}}</span>-->
+      <!--<span>{{listElem.type}}</span>-->
+      <!--<button>X</button>-->
+    <!--</li>-->
+  <!--</ul>-->
+<!--</div>-->
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Date from</th>
+      <th>Date to</th>
+      <th>Type</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let listElem of pagedItems; let i = index" >
+    <th>{{i+1+(pager.currentPage-1)*pager.pageSize}}</th>
+    <th>{{listElem.dateFrom  | date: 'dd/MM/yyyy'}}</th>
+    <th>{{listElem.dateTo  | date: 'dd/MM/yyyy'}}</th>
+    <th>{{listElem.type}}</th>
+    <th>
+    <button type="button" class="btn btn-default">
+      <span class="glyphicon glyphicon-pencil"></span>
+    </button>
+    <button type="button" class="btn btn-default">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+    </th>
+  </tbody>
+
+</table>
+<!-- pager -->
+<ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+  <li [ngClass]="{disabled:pager.currentPage === 1}">
+    <a (click)="setPage(1)">First</a>
+  </li>
+  <li [ngClass]="{disabled:pager.currentPage === 1}">
+    <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+  </li>
+  <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+    <a (click)="setPage(page)">{{page}}</a>
+  </li>
+  <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+    <a (click)="setPage(pager.currentPage + 1)">Next</a>
+  </li>
+  <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+    <a (click)="setPage(pager.totalPages)">Last</a>
+  </li>
+</ul>

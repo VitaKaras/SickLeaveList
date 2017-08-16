@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
       if(result == 'success') {
         console.log('success logout');
         console.log(result);
+        this.router.navigate(['/start']);
       }
       //this.router.navigateByUrl('/start/sign_in');
     }, (err) => {

@@ -13,6 +13,7 @@ import {LogOutService} from "./logout.service";
 import {ListService} from "./home/list.service";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {SharedService} from "./shared.service";
+import {PagerService} from "./home/pager.service";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import {SharedService} from "./shared.service";
     HomeModule,
     NgbModule.forRoot(),
   ],
-  providers: [RegistrationService, AuthorizationService, LogOutService, ListService, SharedService],
+  providers: [RegistrationService, AuthorizationService, LogOutService, ListService, SharedService, PagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

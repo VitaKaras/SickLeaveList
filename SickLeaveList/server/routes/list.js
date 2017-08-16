@@ -5,9 +5,14 @@ const User = require('../../src/models/user');
 
 //get all list
 router.get('/:userId', function (req, res, next) {
-  ListElem.find(function (err, list) {
+  // ListElem.find(function (err, list) {
+  //   if(err) return next(err);
+  //   res.json(list);
+  // });
+  User.findById(req.params.userId, 'list', function (err, user) {
     if(err) return next(err);
-    res.json(list);
+    //console.log(list);
+    res.json(user['list']);
   })
   console.log("get list");
 });

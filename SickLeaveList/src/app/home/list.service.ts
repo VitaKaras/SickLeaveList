@@ -21,6 +21,18 @@ export class ListService {
     });
   }
 
+  getAllList(userId) {
+    return new Promise((resolve, reject) => {
+      this.http.get('/list/' + userId)
+        .map(res => res.json())
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          console.log('error get all list');
+          reject(err);
+        });
+    });
+  }
 
   // getVacationInd(): Observable<number> {
   //   const url = this.listUrl+'/vac_count';

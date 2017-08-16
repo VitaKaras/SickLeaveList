@@ -21,7 +21,7 @@ router.post('/', function(req, res, next) {
       login: req.body.login,
       password: req.body.password,
       passwordConf: req.body.passwordConf,
-    }
+    };
 
     User.create(userData, function (error, user) {
       if (error) {

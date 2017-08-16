@@ -8,6 +8,7 @@ import { AddListElementComponent } from './add-list-element/add-list-element.com
 import {FormsModule} from "@angular/forms";
 import {DatePickerModule} from "ng2-datepicker";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {Ng2SmartTableModule} from "ng2-smart-table";
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     HomeRoutingModule,
     FormsModule,
     DatePickerModule,
-    NgbModule
+    NgbModule,
+    Ng2SmartTableModule
   ],
   declarations: [
     HomeComponent,
