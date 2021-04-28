@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../user/user';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {RegistrationService} from "../registration/registration.service";
 import {Router} from "@angular/router";
@@ -15,7 +14,7 @@ import {LogOutService} from "../../logout.service";
 export class AuthorizationComponent implements OnInit {
   registrationForm: FormGroup;
   user = {
-   login: '',
+    login: '',
     password: ''
   };
 
